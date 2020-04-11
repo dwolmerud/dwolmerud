@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container div {
+  width: 500px;
+}
+
+.container input {
+  width: 100px;
+  margin-left: 5px;
+}
