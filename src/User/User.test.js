@@ -10,8 +10,10 @@ describe("User component", () => {
   });
 
   it("shows no name if none is passed in greeting header", () => {
-    const { queryByText } = render(<User />);
+    const { queryByText, debug } = render(<User />);
+    debug();
     expect(queryByText("John")).not.toBeInTheDocument();
+    expect(queryByText("Greetings !")).toBeInTheDocument();
   });
 
   it("sets a name when typing", () => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./weather.css";
 import CurrentWeather from "./CurrentWeather";
+import { getWeather } from "../api/weather/requests";
 
 const cities = [
   { key: "Stockholm", value: "Stockholm" },
@@ -10,20 +11,12 @@ const cities = [
   { key: "Rio de Janeiro", value: "Rio de Janeiro" },
 ];
 
-function Weather() {
-  const [city, setCity] = useState(cities[0].value);
+function Weather({ initalCity = "Stockholm" }) {
+  const [city, setCity] = useState(initalCity);
   const [weather, setWeather] = useState();
 
   useEffect(() => {
-    const currentUrl = new URL(window.location.href);
-
-    const fetchData = async () => {
-      const data = await fetch(
-        `${currentUrl.href}current?city=${city}`
-      ).then((r) => r.json());
-      setWeather(data);
-    };
-    fetchData();
+    getWeather(city, setWeather);
   }, [city]);
 
   return (

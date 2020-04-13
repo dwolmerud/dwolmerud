@@ -10,11 +10,13 @@ function User({ name: initName = "" }) {
         <label htmlFor="name">Name</label>
 
         <input
+          id="name"
           type="text"
           label="name"
           aria-label="name"
           onChange={(e) => setName(e.target.value)}
           value={name}
+          placeholder="Fill in a name"
         />
       </div>
 

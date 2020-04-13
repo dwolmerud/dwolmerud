@@ -1,0 +1,28 @@
+import { render as r } from "react-testing-library";
+import { createStore } from "redux";
+import { Provider as ReduxProvider } from "react-redux";
+import { createHistory } from "@reach/router";
+import { reducer } from "../state";
+
+export function renderWithProviders(
+  ui,
+  {
+    initialState = {},
+    store = createStore(reducer, initialState),
+    history = createHistory(),
+    pattern,
+  } = {}
+) {
+  const ProviderWrappedUI = () => (
+    <ReduxProvider store={store}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider>
+          <Router history={history}>
+            <Route path={pattern}>{ui}</Route>
+          </Router>
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </ReduxProvider>
+  );
+  return { ...r(<ProviderWrappedUI />), store, history };
+}

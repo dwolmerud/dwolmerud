@@ -4,17 +4,26 @@ import Weather from "./Weather/Weather";
 import "./app.css";
 
 function App() {
-  const [name, setName] = useState("Daniel");
-
-  useEffect(() => {
-    setName("Daniel");
-  }, [name]);
-
   return (
     <div className="container">
-      <User name={name} />
+      <form>
+        <User />
 
-      <Weather />
+        <Weather />
+
+        <button
+          type="submit"
+          style={{ backgroundColor: "grey", color: "white" }}
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          Let do magic{" "}
+          <span role="img" aria-label="sparkles">
+            ✨
+          </span>
+        </button>
+      </form>
     </div>
   );
 }

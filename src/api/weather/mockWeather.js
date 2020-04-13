@@ -1,6 +1,6 @@
 import faker from "faker";
 
-export default function createMockWeather(object = {}) {
+export default function createMockWeather(weather = {}) {
   return {
     coord: { lon: faker.random.number(), lat: faker.random.number() },
     weather: [
@@ -35,6 +35,6 @@ export default function createMockWeather(object = {}) {
     id: faker.random.uuid(),
     name: faker.address.city(),
     cod: faker.random.number(),
-    ...object,
+    ...weather,
   };
 }

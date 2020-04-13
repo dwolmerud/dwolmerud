@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, within, wait } from "@testing-library/react";
 import Weather from "./Weather";
-import createMockWeather from "./mockWeather";
+import createMockWeather from "../api/weather/mockWeather";
 
 describe("Weather component", () => {
   it("shows the current weather in Stockholm by default", async () => {
@@ -22,8 +22,9 @@ describe("Weather component", () => {
     const citiesSelect = getByLabelText("City");
 
     expect(citiesSelect).toHaveValue("Stockholm");
+
     expect(window.fetch).toHaveBeenCalledWith(
-      expect.stringContaining("city=Stockholm")
+      expect.stringContaining("Stockholm")
     );
 
     const container = await findByTestId("current-weather");
