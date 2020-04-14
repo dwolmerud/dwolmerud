@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import User from "./User/User";
 import Weather from "./Weather/Weather";
 import "./app.css";
@@ -10,7 +10,7 @@ function App() {
         <User />
 
         <Weather />
-
+        {/* 
         <button
           type="submit"
           style={{ backgroundColor: "grey", color: "white" }}
@@ -22,7 +22,7 @@ function App() {
           <span role="img" aria-label="sparkles">
             ✨
           </span>
-        </button>
+        </button> */}
       </form>
     </div>
   );

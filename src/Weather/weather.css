@@ -5,10 +5,6 @@
   flex-direction: column;
 }
 
-.container div {
-  width: 500px;
-}
-
 .container select {
   width: 100px;
   margin-left: 5px;

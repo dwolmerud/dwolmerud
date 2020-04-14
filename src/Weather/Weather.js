@@ -4,26 +4,36 @@ import CurrentWeather from "./CurrentWeather";
 import { getWeather } from "../api/weather/requests";
 
 const cities = [
-  { key: "Stockholm", value: "Stockholm" },
-  { key: "London", value: "London" },
-  { key: "Berlin", value: "Berlin" },
-  { key: "Delhi", value: "Delhi" },
-  { key: "Rio de Janeiro", value: "Rio de Janeiro" },
+  { key: "Stockholm", value: "Stockholm 🇸🇪" },
+  { key: "London", value: "London 🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
+  { key: "Berlin", value: "Berlin 🇩🇪" },
+  { key: "Delhi", value: "Delhi 🇮🇳" },
+  { key: "Rio de Janeiro", value: "Rio de Janeiro 🇧🇷" },
 ];
 
-function Weather({ initalCity = "Stockholm" }) {
-  const [city, setCity] = useState(initalCity);
+function Weather({ initialCity }) {
+  const [city, setCity] = useState(initialCity);
   const [weather, setWeather] = useState();
 
   useEffect(() => {
-    getWeather(city, setWeather);
+    if (city !== undefined) {
+      getWeather(city.split(" ")[0], setWeather);
+    }
   }, [city]);
 
   return (
     <div className="container">
       <div>
         <label htmlFor="cities">City</label>
-        <select id="cities" onChange={(e) => setCity(e.target.value)}>
+        <select
+          id="cities"
+          defaultValue="default"
+          onChange={(e) => setCity(e.target.value)}
+        >
+          <option value="default" disabled>
+            Pick a city
+          </option>
+
           {cities.map(({ key, value }) => (
             <option key={key} value={value}>
               {value}

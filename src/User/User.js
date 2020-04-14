@@ -20,9 +20,11 @@ function User({ name: initName = "" }) {
         />
       </div>
 
-      <div>
-        <h1>Greetings {name}!</h1>
-      </div>
+      {name && name !== "" && (
+        <div>
+          <h1>Greetings {name}!</h1>
+        </div>
+      )}
     </div>
   );
 }
