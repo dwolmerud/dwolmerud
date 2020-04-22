@@ -33,19 +33,3 @@ app.get("/current", (req, res) => {
       res.redirect("/error");
     });
 });
-
-app.get("/forecast", (req, res) => {
-  const city = req.query.city !== undefined ? req.query.city : "Stockholm";
-
-  const forecastAPIUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric&cnt=14`;
-
-  fetch(forecastAPIUrl)
-    .then((res) => res.json())
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.redirect("/error");
-    });
-});

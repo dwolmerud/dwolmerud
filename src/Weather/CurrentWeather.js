@@ -28,11 +28,11 @@ function CurrentWeather({
           src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         />
       </div>
-      <p>
+      <h2>
         Currently in {city} it is {description} with {temperature} degrees.{" "}
         <br /> It feels like {feelsLike} degrees {getEmoji} with a wind speed of{" "}
         {wind} m/s.
-      </p>
+      </h2>
     </div>
   );
 }

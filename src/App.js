@@ -10,19 +10,6 @@ function App() {
         <User />
 
         <Weather />
-        {/* 
-        <button
-          type="submit"
-          style={{ backgroundColor: "grey", color: "white" }}
-          onClick={(e) => {
-            e.preventDefault();
-          }}
-        >
-          Let do magic{" "}
-          <span role="img" aria-label="sparkles">
-            ✨
-          </span>
-        </button> */}
       </form>
     </div>
   );

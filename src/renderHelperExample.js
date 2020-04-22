@@ -1,4 +1,7 @@
-import { render as r } from "react-testing-library";
+/* eslint-disable */
+
+import React from "react";
+import { render } from "@testing-library/react";
 import { createStore } from "redux";
 import { Provider as ReduxProvider } from "react-redux";
 import { createHistory } from "@reach/router";
@@ -24,5 +27,5 @@ export function renderWithProviders(
       </ThemeProvider>
     </ReduxProvider>
   );
-  return { ...r(<ProviderWrappedUI />), store, history };
+  return { ...render(<ProviderWrappedUI />), store, history };
 }

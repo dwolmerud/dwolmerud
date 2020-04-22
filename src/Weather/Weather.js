@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./weather.css";
 import CurrentWeather from "./CurrentWeather";
-import { getWeather } from "../api/weather/requests";
+import { getWeather } from "../api/requests";
 
 const cities = [
   { key: "Stockholm", value: "Stockholm 🇸🇪" },

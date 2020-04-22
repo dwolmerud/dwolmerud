@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./user.css";
 
-function User({ name: initName = "" }) {
+export default function User({ name: initName = "" }) {
   const [name, setName] = useState(initName);
 
   return (
@@ -10,22 +10,18 @@ function User({ name: initName = "" }) {
         <label htmlFor="name">Name</label>
 
         <input
-          id="name"
           type="text"
-          label="name"
-          aria-label="name"
+          label="Name"
+          aria-label="Name"
           onChange={(e) => setName(e.target.value)}
           value={name}
-          placeholder="Fill in a name"
+          placeholder="Fill in your name"
         />
       </div>
 
       {name && name !== "" && (
-        <div>
-          <h1>Greetings {name}!</h1>
-        </div>
+        <h1 data-testid="greeting-message">Greetings {name}!</h1>
       )}
     </div>
   );
 }
-export default User;

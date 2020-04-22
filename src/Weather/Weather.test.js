@@ -1,7 +1,10 @@
 import React from "react";
 import { render, fireEvent, within, wait } from "@testing-library/react";
+
 import Weather from "./Weather";
-import createMockWeather from "../api/weather/mockWeather";
+import * as Requests from "../api";
+
+import createMockWeather from "../api/mockWeather";
 
 describe("Weather component", () => {
   it("shows current weather in Stockholm", async () => {
@@ -19,15 +22,16 @@ describe("Weather component", () => {
     });
 
     const { getByLabelText, findByTestId } = render(<Weather />);
-    const citiesSelect = getByLabelText("City");
+    const citiesSelect = getByLabelText(/City/);
 
     fireEvent.change(citiesSelect, { target: { value: "Stockholm 🇸🇪" } });
-
     expect(citiesSelect).toHaveValue("Stockholm 🇸🇪");
 
-    expect(window.fetch).toHaveBeenCalledWith(
-      expect.stringContaining("Stockholm")
-    );
+    await wait(() => {
+      expect(window.fetch).toHaveBeenCalledWith(
+        expect.stringContaining("Stockholm")
+      );
+    });
 
     const container = await findByTestId("current-weather");
     within(container).getByText(
@@ -56,7 +60,7 @@ describe("Weather component", () => {
 
     await wait(() => {
       expect(window.fetch).toHaveBeenCalledWith(
-        expect.stringContaining("city=Delhi")
+        expect.stringContaining("Delhi")
       );
     });
 

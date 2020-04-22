@@ -1,3 +1,1 @@
-import * as Weather from "./weather";
-
-export { Weather };
+export * from "./requests";

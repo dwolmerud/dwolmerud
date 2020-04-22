@@ -4,8 +4,14 @@ import User from "./User";
 
 describe("User component", () => {
   it("shows name in greeting header", () => {
-    const { getByText } = render(<User name="John" />);
-    const header = getByText("Greetings John!");
+    const { getByText } = render(<User name="Daniel" />);
+    const header = getByText("Greetings Daniel!");
+    expect(header).toBeInTheDocument();
+  });
+
+  it("shows name in greeting header in Swedish", () => {
+    const { getByTestId } = render(<User name="Daniel" />);
+    const header = getByTestId("greeting-message");
     expect(header).toBeInTheDocument();
   });
 
@@ -15,10 +21,15 @@ describe("User component", () => {
     expect(queryByText("Greetings")).not.toBeInTheDocument();
   });
 
-  it("sets a name when typing", () => {
-    const { getByLabelText } = render(<User />);
-    const input = getByLabelText("name");
-    fireEvent.change(input, { target: { value: "John" } });
-    expect(input.value).toBe("John");
+  it("shows a greeting message when typing", () => {
+    const { getByLabelText, getByText } = render(<User />);
+
+    const input = getByLabelText("Name");
+
+    fireEvent.change(input, { target: { value: "Daniel" } });
+
+    const header = getByText("Greetings Daniel!");
+
+    expect(header).toBeInTheDocument();
   });
 });
