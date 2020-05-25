@@ -1,8 +1,7 @@
 import React from "react";
-import { render, fireEvent, within, wait } from "@testing-library/react";
+import { render, fireEvent, within, waitFor } from "@testing-library/react";
 
 import Weather from "./Weather";
-import * as Requests from "../api";
 
 import createMockWeather from "../api/mockWeather";
 
@@ -27,7 +26,7 @@ describe("Weather component", () => {
     fireEvent.change(citiesSelect, { target: { value: "Stockholm 🇸🇪" } });
     expect(citiesSelect).toHaveValue("Stockholm 🇸🇪");
 
-    await wait(() => {
+    await waitFor(() => {
       expect(window.fetch).toHaveBeenCalledWith(
         expect.stringContaining("Stockholm")
       );
@@ -58,7 +57,7 @@ describe("Weather component", () => {
 
     fireEvent.change(citiesSelect, { target: { value: "Delhi 🇮🇳" } });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(window.fetch).toHaveBeenCalledWith(
         expect.stringContaining("Delhi")
       );
